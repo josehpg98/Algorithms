@@ -1,0 +1,76 @@
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+using namespace std;
+main()
+{
+    setlocale(LC_ALL,"portuguese");
+    int op, V[20],i,j,aux, vlrPsub, vlrPsubstituto;
+    do
+    {
+        cout << "\n ******************************\n";
+        cout << "\n Escolha opção \n 1 - Gerar Vetor ";
+        cout << "\n 2 - Mostrar Vetor ";
+        cout << "\n 3 - Ordenar Vetor ";
+        cout << "\n 4 - Substituir Valores ";
+        cout << "\n 5 - Sair \n";
+        cout << "\n ******************************\n";
+        cin>>op;
+        system("cls");
+        if (op == 1)
+        {
+            srand(time(NULL));
+            for(i=0; i<20; i++)
+            {
+                V[i]= rand()%50;
+            }
+            cout<<"\n vetor Gerado ";
+        }
+        else
+        {
+            if (op == 2)
+            {
+                for(i=0; i<20; i++)
+                {
+                    cout<< " \nV["<<i<<"]: "<<V[i];
+                }
+            }
+            else if (op == 3)
+            {
+                for(i=0; i<19; i++)
+                {
+                    for(j=i+1; j<20; j++)
+                    {
+                        if(V[j]<V[i])
+                        {
+                            aux = V[i];
+                            V[i]= V[j];
+                            V[j]= aux;
+                        }
+                    }
+                }
+            }
+            else if (op == 4)
+            {
+                cout << "\n Informe o valor para ser Substituido ";
+                cin>>vlrPsub;
+                cout << "\n Informe o valor para substituir inserir ";
+                cin>>vlrPsubstituto;
+                for(j=0; j<20; j++)
+                {
+                    if(V[j]==vlrPsub)
+                    {
+                       V[j]=vlrPsubstituto;
+                       cout<< "\n Valor Substituido !!!! ";
+                    }
+                }
+            }
+            else
+            {
+                cout << " \n opção invalida ou FIM";
+            }
+        }
+    }
+    while(op != 5);
+
+}
