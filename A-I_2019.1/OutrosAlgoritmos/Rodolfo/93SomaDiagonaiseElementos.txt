@@ -1,0 +1,91 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+main ()
+{
+
+    setlocale(LC_ALL,"Portuguese");
+
+
+    /*3)Crie um programa que preencha uma matriz 5x 5 com números inteiros, calcule e mostre a soma :
+    a)Dos elementos da linha 4;
+    b)Dos elementos da coluna 2;
+    c)Dos elementos da diagonal principal;
+    d)Dos elementos da  diagonal secundáriae)De todos os elementos da matriz
+    */
+
+    srand(time(NULL));
+    int m[5][5],soma=0;
+
+    cout <<"Geração da matriz: " << endl;
+    for (int l=0; l < 5; l++)
+    {
+        for (int c=0; c < 5; c++)
+        {
+            m[l][c] = rand () % 2;
+            cout << m[l][c] <<  "\t";
+        }
+        cout << endl;
+    }
+    cout <<"Soma dos elementos linha 4: " << endl;
+    for (int i=0 ; i < 5; i++)
+    {
+        soma = soma + m[3][i];
+    }
+    cout << soma << endl;
+
+    soma=0;
+    cout <<"Soma dos elementos coluna 2: " << endl;
+    for (int i=0 ; i < 5; i++)
+    {
+        soma = soma + m[i][1];
+    }
+    cout << soma << endl;
+    soma =0;
+    cout << "Elementos diagonal principal e soma : " << endl;
+    for (int l=0; l < 5; l++)
+    {
+        for (int c=0; c<5; c++)
+        {
+            if (l == c)
+            {
+                cout << m[l][c] << endl;
+                soma = soma + m[l][c];
+            }
+        }
+    }
+    cout <<"SOMA DIAGONAL PRINCIPAL: " << endl;
+    cout << soma << endl;
+
+    cout << "Elementos diagonal secundária e soma : " << endl;
+    int diagSec=0,c=4;
+    soma=0;
+    for (int l=0; l < 5; l++)
+    {
+        diagSec = m[l][c];
+        cout <<diagSec << endl;
+        c--;
+        soma = diagSec+soma;
+
+    }
+    cout <<"SOMA DIAGONAL SECUNDÁRIA: " << endl;
+    cout << soma << endl;
+
+    soma=0;
+
+    cout <<"A soma de todos os elementos da matriz é: " << endl;
+    for (int l=0; l < 5; l++) {
+        for (int c=0; c <5; c++) {
+            soma = soma +m[l][c];
+        }
+    }
+
+cout << soma << endl;
+
+
+
+}
