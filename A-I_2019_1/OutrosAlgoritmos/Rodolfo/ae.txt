@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+int calcIdade (int d, int m, int a) {
+    int id, aa=2019,ma=6,da=26;
+    id = aa - a;
+    if (m > ma) {
+        id = id -1;
+    }
+    if (m == ma) {
+        if (da <= d)
+        {
+            id = id-1;
+        }
+    }
+
+return id;
+}
+main ()
+{
+
+    int dia, mes, ano, id=0;
+
+    cin >>dia;
+    cin >> mes;
+    cin >>ano;
+
+    if (calcIdade(dia,mes,ano) > 18)
+    cout <<"maior";
+    else
+        cout << "menor";
+
+
+}
+
+
+
+
+
+
+

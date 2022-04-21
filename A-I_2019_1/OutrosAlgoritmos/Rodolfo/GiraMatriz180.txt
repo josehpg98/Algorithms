@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+
+main ()
+{
+
+    setlocale(LC_ALL,"Portuguese");
+
+    int m[3][3] =
+    {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9},
+    };
+    int b[3][3];
+
+    cout <<"MATRIZ GERADA : " << endl;
+
+    for (int l=0; l < 3; l++)
+    {
+        for (int c=0; c < 3; c++)
+        {
+            cout << m[l][c] << "\t";
+        }
+        cout << endl;
+    }
+    int flag = 3; //flag é o posicionador das colunas que a matriz b recebe
+    for (int l=0; l < 3 ; l++)
+    {
+        flag--;
+        for (int c=0; c < 3; c++)
+        {
+            b[2-c][l] = m[c][flag];
+        }
+    }
+    cout <<"Inversão da matriz em 180 graus: " << endl;
+    for (int l=0; l < 3; l++)
+    {
+        for (int c=0; c < 3; c++)
+        {
+            cout << b[l][c] << "\t";
+        }
+        cout << endl;
+    }
+
+}

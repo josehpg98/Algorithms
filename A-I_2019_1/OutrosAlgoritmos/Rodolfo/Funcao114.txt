@@ -1,0 +1,114 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <time.h>
+
+using namespace std;
+int devolveMaior(int matriz[3][3])
+{
+    int maior = matriz[0][0];
+    for (int l=0; l < 3; l++)
+    {
+        for (int c=0; c < 3; c++)
+        {
+            if (matriz[l][c] > maior)
+            {
+                maior = matriz[l][c];
+            }
+        }
+    }
+    return maior;
+}
+bool verifica (int matriz[3][3],int numero)
+{
+    int condition = false;
+    for (int l=0; l < 3; l++)
+    {
+        for (int c=0; c < 3; c++)
+        {
+            if (numero == matriz[l][c])
+            {
+                condition = true;
+                break;
+            }
+        }
+    }
+    return condition;
+}
+void retornaDiag (int m[3][3])
+{
+    int x=0, v[3];
+    for (int l=0; l < 3; l++)
+    {
+        for (int c=0; c < 3; c++)
+        {
+            if (l == c)
+            {
+                v[x] = m[l][c];
+                x++;
+            }
+        }
+    }
+    for (int i=0; i < 3; i++)
+    {
+        cout << v[i] << endl;
+    }
+}
+
+main ()
+{
+
+    setlocale(LC_ALL,"Portuguese");
+    /*114)Faça     um     programa     que     aloque     uma     matriz     quadrada dinamicamente.
+      Alem disso,  seu  programa  deve  ter  as  seguintes  funções disponíveis:_ Uma função que devolve o maior dos elementos contidos na matriz;_
+       Uma  função  booleana  que  identifica  se  um  determinado  valor  (passado como parâmetro) está contido na matriz;_
+        Um procedimento  que  recebe  esta  matriz  e  devolve  os  elementos contidos em sua diagonal principal, copiados para um vetor.
+    */
+
+    int m[3][3],escolha,n;
+    char continua = 's';
+    srand(time(NULL));
+    cout <<"Valores matriz: " << endl;
+    for (int l=0; l < 3; l++)
+    {
+        for (int c=0; c < 3; c++)
+        {
+            m[l][c] = rand () % 300;
+            cout << m[l][c] << "\t";
+        }
+        cout << endl;
+    }
+    while (continua == 's' or continua == 'S')
+    {
+        cout <<"=========================================" << endl;
+        cout <<"SELECIONE UMA OPÇÃO NO MENU ABAIXO: " << endl;
+        cout <<"1 - MAIOR VALOR DA MATRIZ" << endl;
+        cout <<"2 - VERIFICAR SE UM VALOR SE ENCONTRA NA MATRIZ" << endl;
+        cout <<"3 - RECEBER A DIAGONAL EM UM ARRAY" << endl;
+        cout <<"=============================================" << endl;
+        cin >> escolha;
+        while (escolha < 1 or escolha > 3)
+        {
+            cout <<"Escolha uma opção presente no menu. Digite novamente!" << endl;
+            cin >> escolha;
+        }
+        if (escolha == 1)
+        {
+            cout <<"O maior valor da matriz é: " << devolveMaior(m) << endl;
+        }
+        else if (escolha == 2)
+        {
+            cout <<"Digite um número para checar se encontra na matriz:" << endl;
+            cin >> n;
+            cout <<"Se aparecer 1 quer dizer que está contido e 0 não consta :" << verifica(m,n) << endl;
+        }
+        else if (escolha == 3)
+        {
+            cout <<"Os elementos da diagonal principal são : " << endl;
+             retornaDiag(m);
+
+        }
+        cout <<"Continua no programa? S/n " << endl;
+        cin >> continua;
+    }
+}
